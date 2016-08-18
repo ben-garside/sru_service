@@ -1,0 +1,4 @@
+git+https://github.com/abusaidm/iis_shim
+git+https://github.com/ben-garside/schtasks_shim
+aiohttp
+voluptuous

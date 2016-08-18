@@ -1,0 +1,14 @@
+{
+    "modules": [
+        {
+            "name": "sru_pip",
+            "link": "git+https://github.com/abusaidm/sru_pip",
+            "version": "0.1.0"
+        },
+        {
+            "name": "sru_utils",
+            "link": "git+https://github.com/ben-garside/sru_utils",
+            "version": "0.1.0"
+        }
+    ]
+}
