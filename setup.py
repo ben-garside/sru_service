@@ -8,7 +8,7 @@ Link
 * Source
   https://github.com/abusaidm/
 """
-from setuptools import setup
+from setuptools import setup, find_packages
 
 version = "0.1.0"
 
@@ -17,10 +17,8 @@ setup(
     version=version,
     author="Mohamed Abusaid",
     author_email="m.abusaid<at>yahoo<dot>com",
-    packages=[
-        "sru_service",
-        "sru_service.executable"
-        ],
+    packages=find_packages(),
+    # package_data={"sru_service":['*.*', "sru_service/executable/*.*"]},
     include_package_data=True,
     url="http://github.com/abusaidm/sru_service/packages/{}/".format(version),
 
