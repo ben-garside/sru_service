@@ -19,7 +19,7 @@ setup(
     author_email="m.abusaid<at>yahoo<dot>com",
     packages=[
         "sru_service",
-        "sru_service.service"
+        "sru_service.executable"
         ],
     include_package_data=True,
     url="http://github.com/abusaidm/sru_service/packages/{}/".format(version),
@@ -29,10 +29,7 @@ setup(
     # long_description=open("README.txt").read() or just """ lots of text here too""",
     # Dependent packages (distributions)
     dependency_links=[
-        "https://github.com/abusaidm/sru_pip/tarball/master#egg=sru_pip-0.1.0"
     ],
     install_requires=[
-        "aiohttp",
-        "sru_pip>=0.1.0"
     ]
 )
