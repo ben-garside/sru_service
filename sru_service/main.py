@@ -14,8 +14,8 @@ service_file = os.path.join(ROOT, "service", "sru.exe")
 args_file = os.path.join(ROOT, "service", "args.txt")
 
 def setup():
-    HOST = ask("enter Hostname, default 'localhost'", default="localhost")
-    PORT = ask("enter Port, default '30080'", default="30080")
+    HOST = ask("enter Hostname", default="localhost")
+    PORT = ask("enter Port", default="30080")
     SSL = ask("would you like to use ssl? (y/n)", required=True)
 
     SSL_CERT = None
@@ -25,11 +25,11 @@ def setup():
         SSL_CERT = ask("enter certificate absolute path", required=True)
         SSL_KEY = ask("enter key absolute path", required=True)
     
-    ID = ask("enter service ID, default 'sru'", default="sru")
-    NAME = ask("enter service NAME, default 'SRU'", default="SRU")
-    DESC = ask("enter service Description, default 'SRU Automator'", default="SRU Automator")
-    EXE = ask("enter python path, default 'python'", default="python")
-    LOGMODE = ask("enter service Logmode, default 'rotate'", default="rotate")
+    ID = ask("enter service ID", default="sru")
+    NAME = ask("enter service NAME", default="SRU")
+    DESC = ask("enter service Description", default="SRU Automator")
+    EXE = ask("enter python path", default="python")
+    LOGMODE = ask("enter service Logmode", default="rotate")
 
     setArgs(host=HOST, port=PORT, ssl_cert=SSL_CERT, ssl_key=SSL_KEY)
     args = getArgs()
