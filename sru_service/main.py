@@ -12,9 +12,10 @@ xml_file = os.path.join(ROOT, "service", "sru.xml")
 service_file = os.path.join(ROOT, "service", "sru.exe")
 args_file = os.path.join(ROOT, "service", "args.txt")
 
-def setup(id, name, desc="", exe="python", arg="", logmode=""):
+def setup(id, name, desc="", exe="python", logmode=""):
     with open(xml_template, "r", encoding="utf-8") as f:
         template = f.read()
+        arg = getArgs()
         new_template = template.format(id, name, desc, exe, arg, logmode)
         with open(xml_file, "w+") as fr:
             fr.write(new_template)
