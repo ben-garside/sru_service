@@ -6,13 +6,39 @@
 import os
 from sru_utils.helper import run
 from .settings import ROOT
+from .helper import ask
 
 xml_template = os.path.join(ROOT, "service", "template.xml")
 xml_file = os.path.join(ROOT, "service", "sru.xml")
 service_file = os.path.join(ROOT, "service", "sru.exe")
 args_file = os.path.join(ROOT, "service", "args.txt")
 
-def setup(id, name, desc="", exe="python", logmode=""):
+def setup():
+    HOST = ask("enter Hostname, default 'localhost'", default="localhost")
+    PORT = ask("enter Port, default '30080'", default="30080")
+    SSL = ask("would you like to use ssl? (y/n)", required=True)
+
+    SSL_CERT = None
+    SSL_KEY = None
+
+    if SSL == "y":
+        SSL_CERT = ask("enter certificate absolute path", required=True)
+        SSL_KEY = ask("enter key absolute path", required=True)
+    
+    ID = ask("enter service ID, default 'sru'", default="sru")
+    NAME = ask("enter service NAME, default 'SRU'", default="SRU")
+    DESC = ask("enter service Description, default 'SRU Automator'", default="SRU Automator")
+    EXE = ask("enter python path, default 'python'", default="python")
+    LOGMODE = ask("enter service Logmode, default 'rotate'", default="rotate")
+
+    setArgs(host=HOST, port=PORT, ssl_cert=SSL_CERT, ssl_key=SSL_KEY)
+    args = getArgs()
+
+    _setup = setupService(id=ID, name=NAME, desc=DESC, exe=EXE, LOGMODE)
+    print(_setup)
+
+
+def setupService(id, name, desc="", exe="python", logmode=""):
     with open(xml_template, "r", encoding="utf-8") as f:
         template = f.read()
         arg = getArgs()
@@ -20,9 +46,9 @@ def setup(id, name, desc="", exe="python", logmode=""):
         with open(xml_file, "w+") as fr:
             fr.write(new_template)
 
-def setArgs(host="localhost", port="30080", ssl_cert=None, ssl_key=None, modules=None):
+def setArgs(host="localhost", port="30080", ssl_cert=None, ssl_key=None):
     with open(args_file, "w+", encoding="utf-8") as f:
-        args = "-m sru.cli --host {} --port {} --cert {} --key {} --modules {}".format(host, port, ssl_cert, ssl_key, modules)
+        args = "-m sru.cli --host {} --port {} --cert {} --key {}".format(host, port, ssl_cert, ssl_key)
         f.write(args)
 
 def getArgs():
