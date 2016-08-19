@@ -50,7 +50,10 @@ def setupService(id, name, desc="", exe="python", logmode=""):
 
 def setArgs(host="localhost", port="30080", ssl_cert=None, ssl_key=None):
     with open(args_file, "w+", encoding="utf-8") as f:
-        args = "-m sru.cli --host {} --port {} --cert {} --key {}".format(host, port, ssl_cert, ssl_key)
+        if ssl_cert and ssl_key:
+            args = '-m sru.cli --host {} --port {} --cert "{}" --key "{}"'.format(host, port, ssl_cert, ssl_key)
+        else:
+            args = "-m sru.cli --host {} --port {}".format(host, port)
         f.write(args)
 
 def getArgs():
