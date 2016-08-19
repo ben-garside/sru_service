@@ -34,7 +34,7 @@ def setup():
     setArgs(host=HOST, port=PORT, ssl_cert=SSL_CERT, ssl_key=SSL_KEY)
     args = getArgs()
 
-    _setup = setupService(id=ID, name=NAME, desc=DESC, exe=EXE, LOGMODE)
+    _setup = setupService(id=ID, name=NAME, desc=DESC, exe=EXE, logmode=LOGMODE)
     print(_setup)
 
 
