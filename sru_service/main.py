@@ -80,5 +80,9 @@ def stop():
     cmd = "{} stop".format(service_file)
     result = run(cmd)
     return result
-    
+
+def restart():
+    cmd = "{} restart".format(service_file)
+    result = run(cmd)
+    return result
     
