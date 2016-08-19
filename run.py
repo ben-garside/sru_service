@@ -1,1 +1,2 @@
-import sru_service
+from sru_service import main
+# main.setup()

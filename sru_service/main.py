@@ -4,9 +4,9 @@
 # execure the run command to the exe file with install param
 # ...\sru.exe install
 import os
-from sru_utils.helper import run
+
 from .settings import ROOT
-from .helper import ask
+from .helper import ask, run
 
 xml_template = os.path.join(ROOT, "service", "template.xml")
 xml_file = os.path.join(ROOT, "service", "sru.xml")
@@ -35,7 +35,8 @@ def setup():
     args = getArgs()
 
     _setup = setupService(id=ID, name=NAME, desc=DESC, exe=EXE, logmode=LOGMODE)
-    print(_setup)
+    if _setup:
+        print(_setup)
 
 
 def setupService(id, name, desc="", exe="python", logmode=""):
