@@ -37,5 +37,5 @@ def ask(message=None, default=None, required=True):
             if required:
                 if not var:
                     print("This value is required, please try again.")
-                    ask(message, required)
+                    return ask(message, required)
     return var
