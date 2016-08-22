@@ -78,7 +78,7 @@ def start():
 
 def stop():
     cmd = "{} stop".format(service_file)
-    result = run(cmd, **{"close_fds":True})
+    result = run(cmd)
     return result
 
 def restart():
