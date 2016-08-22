@@ -4,11 +4,11 @@ import logging
 
 log = logging.getLogger(__name__)
 
-def run(cmd, errMsg=None):
+def run(cmd, errMsg=None, **kwargs):
     """ run given commands in a subprocess
     """
     try:
-        proc = subprocess.Popen(cmd, shell=True, stdout=subprocess.PIPE, stderr=subprocess.PIPE)
+        proc = subprocess.Popen(cmd, shell=True, stdout=subprocess.PIPE, stderr=subprocess.PIPE, **kwargs)
         output, err = proc.communicate()
         if type(output) == bytes:
             output = output.decode(encoding='UTF-8')
