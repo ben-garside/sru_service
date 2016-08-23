@@ -1,7 +1,7 @@
 ---
 package:
     label   : 'SRU Windows Service Cnotroller'
-    desc    : 'SRU Pagage to control windows Service Manager'
+    desc    : 'SRU Package to control windows Service Manager'
     version : '0.1.0'
     methods :
         add_package :
