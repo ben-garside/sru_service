@@ -1,0 +1,11 @@
+---
+package:
+    label   : 'SRU Windows Service Cnotroller'
+    desc    : 'SRU Pagage to control windows Service Manager'
+    version : '0.1.0'
+    methods :
+        add_package :
+            route   : /service
+            label   : 'Restart SRU Service'
+            desc    : 'Initialise the restart of the SRU service'
+            params  : ~
